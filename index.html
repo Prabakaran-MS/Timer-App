@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMER</title>
+    <link rel="icon" href="./timer.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="content" class="center">
+        <h1>TIMER</h1>
+
+        <label for="hour">Hour :</label>
+        <input id="hourInput" type="number" min="0" placeholder="0">
+
+        <label for="minute">Minute :</label>
+        <input id="minuteInput" type="number" min="0" max="59" placeholder="0">
+
+        <label for="second">Second :</label>
+        <input id="secondInput" type="number" min="0" max="59" placeholder="0">
+
+        <div id="timerWrapper">
+            <div id="timer" class="clock">00:00:00</div>
+        </div>
+
+        <button onclick="startTimer()">Start</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="resetTimer()">Reset</button>
+
+        <div id="showDismiss">
+            <button onclick="dismiss()">Dismiss</button>
+        </div>
+        <audio id="notificationSound" src="./notification.mp3"></audio>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
