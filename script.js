@@ -1,6 +1,9 @@
 let countdownInterval;
 const timerDisplay = document.getElementById('timer');
 const notificationSound = document.getElementById('notificationSound');
+let pauseResumeText = document.getElementById('pauseResume');
+let isPaused = false;
+let remainingTime = 0;
 
 function startTimer() {
     const totalSeconds = getTotalSeconds();
@@ -20,21 +23,24 @@ function getTotalSeconds() {
 
 function setTimeLeft(seconds) {
     const now = Date.now();
-    const then = now + seconds * 1000;
+    let then = now + seconds * 1000;
 
     updateTimerDisplay(seconds);
 
     countdownInterval = setInterval(() => {
-        const secondsLeft = Math.max(Math.round((then - Date.now()) / 1000), 0);
-        updateTimerDisplay(secondsLeft);
+        if (!isPaused) {
+            const secondsLeft = Math.max(Math.round((then - Date.now()) / 1000), 0);
+            updateTimerDisplay(secondsLeft);
 
-        if (secondsLeft === 0) {
-            completeNotification();
-            clearInterval(countdownInterval);
+            if (secondsLeft === 0) {
+                completeNotification();
+                clearInterval(countdownInterval);
+            }
+        } else {
+            then += 1000;
         }
     }, 1000);
 }
-
 
 function updateTimerDisplay(seconds) {
     const hour = Math.floor(seconds / 3600);
@@ -46,8 +52,13 @@ function updateTimerDisplay(seconds) {
     document.title = formattedTime;
 }
 
-function stop() {
-    clearInterval(countdownInterval);
+function pauseResume() {
+    isPaused = !isPaused;
+    if (isPaused) {
+        pauseResumeText.textContent = 'Resume';
+    } else {
+        pauseResumeText.textContent = 'Pause';
+    }
 }
 
 function resetTimer() {
@@ -63,13 +74,11 @@ function completeNotification() {
     notificationSound.currentTime = 0;
     notificationSound.loop = true;
     notificationSound.play();
-    notificationSound.style.display = 'block';
 }
 
 function dismiss() {
     clearInterval(countdownInterval);
     notificationSound.pause();
     notificationSound.currentTime = 0;
-    notificationSound.style.display = 'none';
     resetTimer();
 }

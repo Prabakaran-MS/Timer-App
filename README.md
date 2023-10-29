@@ -2,7 +2,7 @@
 
 ![Timer App Screenshot](./screenshot.png)
 
-This is a straightforward web-based timer application built using HTML, CSS, and JavaScript. It allows you to set countdown timers with customizable hours, minutes, and seconds. The app provides essential functionality such as starting, stopping, resetting, and dismissing timers. Additionally, it includes an audio notification to alert you when a timer completes.
+This is a straightforward web-based timer application built using HTML, CSS, JavaScript and Bootstrap. It allows you to set countdown timers with customizable hours, minutes, and seconds. The app provides essential functionality such as starting, stopping, resetting, and dismissing timers. Additionally, it includes an audio notification to alert you when a timer completes.
 
 ## Features
 

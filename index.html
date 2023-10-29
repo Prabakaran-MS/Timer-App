@@ -6,37 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMER</title>
     <link rel="icon" href="./timer.png">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 
 <body>
-    <div id="content" class="center">
-        <h1>TIMER</h1>
 
-        <label for="hour">Hour :</label>
-        <input id="hourInput" type="number" min="0" placeholder="0">
+    <div class="container d-flex flex-column justify-content-center align-items-center gap-3">
 
-        <label for="minute">Minute :</label>
-        <input id="minuteInput" type="number" min="0" max="59" placeholder="0">
+        <header id="content">
+            <h1 class="display-2">TIMER</h1>
+        </header>
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <label for="hourInput" class="h4 form-label ">Hour</label>
+                <input id="hourInput" class="form-control" type="number" min="0" placeholder="0">
+            </div>
 
-        <label for="second">Second :</label>
-        <input id="secondInput" type="number" min="0" max="59" placeholder="0">
+            <div class="col-sm-4 text-center">
+                <label for="minuteInput" class="h4 form-label">Minute</label>
+                <input id="minuteInput" class="form-control" type="number" min="0" max="59" placeholder="0">
+            </div>
 
-        <div id="timerWrapper">
-            <div id="timer" class="clock">00:00:00</div>
+            <div class="col-sm-4 text-center">
+                <label for="secondInput" class="h4 form-label">Second</label>
+                <input id="secondInput" class="form-control" type="number" min="0" max="59" placeholder="0">
+            </div>
         </div>
 
-        <button onclick="startTimer()">Start</button>
-        <button onclick="stop()">Stop</button>
-        <button onclick="resetTimer()">Reset</button>
+        <div id="timerWrapper" class="rounded-circle border border-5 border-primary w-25 ratio ratio-1x1 text-bg-secondary">
+            <div class="clock d-flex justify-content-center align-items-center ">
+                <h1 id="timer"> 00:00:00</h1>
+            </div>
+        </div>
 
-        <div id="showDismiss">
-            <button onclick="dismiss()">Dismiss</button>
+        <div>
+            <button class="btn btn-primary" onclick="startTimer()">Start</button>
+            <button id="pauseResume" class="btn btn-primary" onclick="pauseResume()">Pause</button>
+            <button class="btn btn-primary" onclick="resetTimer()">Reset</button>
+        </div>
+
+        <div id="showDismiss" class="mb-5">
+            <button class="btn btn-danger" onclick="dismiss()">Dismiss</button>
         </div>
         <audio id="notificationSound" src="./notification.mp3"></audio>
-    </div>
 
-    <script src="./script.js"></script>
+        <script src="./script.js"></script>
+    </div>
 </body>
 
 </html>
